@@ -1,9 +1,9 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class Field : SceneGraphStructureNodeType
     {
         public const string ElementName = "field";
@@ -14,52 +14,42 @@
         public const string AppInfoAttributeName = "appinfo";
         public const string DocumentationAttributeName = "documentation";
 
-        public Field()
-        {
-            this.ChildNodes = new List<SceneGraphFragmentContentModel>();
-            this.Name = string.Empty;
-            this.AccessType = AccessTypeNames.InputOutput;
-            this.Type = FieldTypeName.SFBool;
-            this.Value = null;
-            this.AppInfo = null;
-            this.Documentation = null;
-        }
-
         private List<SceneGraphFragmentContentModel> childNodes;
-        public List<SceneGraphFragmentContentModel> ChildNodes
-        {
-            get
-            {
-                return childNodes;
-            }
-
-            set
-            {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
-
-                this.childNodes = value;
-            }
-        }
 
         private string name;
-        public string Name
+
+        public Field()
         {
-            get
-            {
-                return name;
-            }
+            ChildNodes = new List<SceneGraphFragmentContentModel>();
+            Name = string.Empty;
+            AccessType = AccessTypeNames.InputOutput;
+            Type = FieldTypeName.SFBool;
+            Value = null;
+            AppInfo = null;
+            Documentation = null;
+        }
+
+        public List<SceneGraphFragmentContentModel> ChildNodes
+        {
+            get => childNodes;
 
             set
             {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
+                if (value == null) throw new FormatException();
 
-                this.name = value;
+                childNodes = value;
+            }
+        }
+
+        public string Name
+        {
+            get => name;
+
+            set
+            {
+                if (value == null) throw new FormatException();
+
+                name = value;
             }
         }
 
@@ -77,29 +67,18 @@
         {
             writer.WriteStartElement(ElementName);
 
-            writer.WriteAttributeString(NameAttributeName, this.Name);
-            writer.WriteAttributeString(AccessTypeAttributeName, this.AccessType.ToString("g"));
-            writer.WriteAttributeString(TypeAttributeName, FieldTypeNameConverter.ToString(this.Type));
+            writer.WriteAttributeString(NameAttributeName, Name);
+            writer.WriteAttributeString(AccessTypeAttributeName, AccessType.ToString("g"));
+            writer.WriteAttributeString(TypeAttributeName, FieldTypeNameConverter.ToString(Type));
 
-            if (this.Value != null)
-            {
-                writer.WriteAttributeString(ValueAttributeName, this.Value.ToString());
-            }
+            if (Value != null) writer.WriteAttributeString(ValueAttributeName, Value.ToString());
 
-            if (this.AppInfo != null)
-            {
-                writer.WriteAttributeString(AppInfoAttributeName, this.AppInfo.ToString());
-            }
+            if (AppInfo != null) writer.WriteAttributeString(AppInfoAttributeName, AppInfo.ToString());
 
-            if (this.Documentation != null)
-            {
-                writer.WriteAttributeString(DocumentationAttributeName, this.Documentation.ToString());
-            }
+            if (Documentation != null)
+                writer.WriteAttributeString(DocumentationAttributeName, Documentation.ToString());
 
-            foreach (var item in this.ChildNodes)
-            {
-                ((X3DNode)item).Write(writer);
-            }
+            foreach (var item in ChildNodes) ((X3DNode)item).Write(writer);
 
             writer.WriteEndElement();
         }

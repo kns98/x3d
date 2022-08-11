@@ -1,45 +1,37 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class ProtoBody : SceneGraphStructureNodeType
     {
         public const string ElementName = "ProtoBody";
 
+        private List<SceneGraphFragmentWithPrototypeDeclarationsContentModel> childNodes;
+
         public ProtoBody()
         {
-            this.ChildNodes = new List<SceneGraphFragmentWithPrototypeDeclarationsContentModel>();
+            ChildNodes = new List<SceneGraphFragmentWithPrototypeDeclarationsContentModel>();
         }
 
-        private List<SceneGraphFragmentWithPrototypeDeclarationsContentModel> childNodes;
-        public List<SceneGraphFragmentWithPrototypeDeclarationsContentModel> ChildNodes 
+        public List<SceneGraphFragmentWithPrototypeDeclarationsContentModel> ChildNodes
         {
-            get
-            {
-                return this.childNodes;
-            }
+            get => childNodes;
 
             set
             {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
+                if (value == null) throw new FormatException();
 
-                this.childNodes = value;
+                childNodes = value;
             }
         }
 
         public void Write(XmlWriter writer)
         {
-            writer.WriteStartElement(ElementName);   
+            writer.WriteStartElement(ElementName);
 
-            foreach (var item in this.ChildNodes)
-            {
-                ((X3DNode)item).Write(writer);
-            }
+            foreach (var item in ChildNodes) ((X3DNode)item).Write(writer);
 
             writer.WriteEndElement();
         }

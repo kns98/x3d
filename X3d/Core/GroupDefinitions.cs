@@ -1,51 +1,168 @@
 ﻿namespace X3d.Core
 {
-    using System;
-    using System.Xml;
-
     /* Extra node groups grouping the virtual node groups below */
 
-    public interface SceneChildContentModel { }
+    public interface SceneChildContentModel
+    {
+    }
 
     /* Virtual node groups specified in the X3D specification */
 
-    public interface AppearanceChildContentModel { }
-    public interface AppearanceChildContentModelNoProtoInstance : AppearanceChildContentModel, SceneGraphFragmentContentModel { }
-    public interface ChildContentModel : GroupingNodeChildContentModel, SceneGraphFragmentContentModel { }
-    public interface ChildContentModelCore : SceneChildContentModel, SceneGraphFragmentContentModel { }
-    public interface ChildContentModelInterchange : ChildContentModel { }
-    public interface ChildContentModelInteractive : ChildContentModel { }
-    public interface ChildContentModelImmersive : ChildContentModel { }
-    public interface ChildContentModelFull : ChildContentModel { }
-    public interface ChildContentModelDIS : ChildContentModel { }
-    public interface ChildContentModelGeoSpatial : ChildContentModel { }
-    public interface ChildContentModelHumanoidAnimation : ChildContentModel { }
-    public interface ChildContentModelNurbs : ChildContentModel { }
-    public interface ChildContentModelProtoInstance : ChildContentModel { }
-    public interface ChildContentModelSceneGraphStructure : GroupingNodeChildContentModel, SceneGraphFragmentWithPrototypeDeclarationsContentModel { }
-    public interface ColorCoordinateContentModel { }
-    public interface ColorNormalTexCoordContentModel { }
-    public interface ComposedGeometryContentModel { }
-    public interface ColorCoordinateNormalTexCoordContentModel { }
-    public interface GeometryContentModel : SceneGraphFragmentContentModel { }
-    public interface GeometryContentModelInterchange { }
-    public interface GeometryContentModelInteractive { }
-    public interface GeometryContentModelImmersive { }
-    public interface GeometryContentModel2D { }
-    public interface GeometryContentModelCAD { }
-    public interface GeometryContentModel2DImmersive { }
-    public interface GeometryContentModelGeoSpatial { }
-    public interface GeometryContentModelNurbs { }
-    public interface GroupingNodeChildContentModel : SceneChildContentModel { }
-    public interface LoadSensorChildContentModel { }
-    public interface SceneGraphFragmentContentModel : SceneGraphFragmentWithPrototypeDeclarationsContentModel { }
-    public interface SceneGraphFragmentWithPrototypeDeclarationsContentModel { }
-    public interface ShapeChildContentModel { }
-    public interface SoundChildContentModel { }
-    public interface TextChildContentModel { }
-    public interface TextureBackgroundChildContentModel { }
-    public interface LayoutGroupContentModel { }
-    public interface RigidJointNodeContentModel { }
-    public interface RigidBodyContentModel { }
-    public interface RigidBodyCollectionContentModel { }
-}                    
+    public interface AppearanceChildContentModel
+    {
+    }
+
+    public interface AppearanceChildContentModelNoProtoInstance : AppearanceChildContentModel,
+        SceneGraphFragmentContentModel
+    {
+    }
+
+    public interface ChildContentModel : GroupingNodeChildContentModel, SceneGraphFragmentContentModel
+    {
+    }
+
+    public interface ChildContentModelCore : SceneChildContentModel, SceneGraphFragmentContentModel
+    {
+    }
+
+    public interface ChildContentModelInterchange : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelInteractive : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelImmersive : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelFull : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelDIS : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelGeoSpatial : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelHumanoidAnimation : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelNurbs : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelProtoInstance : ChildContentModel
+    {
+    }
+
+    public interface ChildContentModelSceneGraphStructure : GroupingNodeChildContentModel,
+        SceneGraphFragmentWithPrototypeDeclarationsContentModel
+    {
+    }
+
+    public interface ColorCoordinateContentModel
+    {
+    }
+
+    public interface ColorNormalTexCoordContentModel
+    {
+    }
+
+    public interface ComposedGeometryContentModel
+    {
+    }
+
+    public interface ColorCoordinateNormalTexCoordContentModel
+    {
+    }
+
+    public interface GeometryContentModel : SceneGraphFragmentContentModel
+    {
+    }
+
+    public interface GeometryContentModelInterchange
+    {
+    }
+
+    public interface GeometryContentModelInteractive
+    {
+    }
+
+    public interface GeometryContentModelImmersive
+    {
+    }
+
+    public interface GeometryContentModel2D
+    {
+    }
+
+    public interface GeometryContentModelCAD
+    {
+    }
+
+    public interface GeometryContentModel2DImmersive
+    {
+    }
+
+    public interface GeometryContentModelGeoSpatial
+    {
+    }
+
+    public interface GeometryContentModelNurbs
+    {
+    }
+
+    public interface GroupingNodeChildContentModel : SceneChildContentModel
+    {
+    }
+
+    public interface LoadSensorChildContentModel
+    {
+    }
+
+    public interface SceneGraphFragmentContentModel : SceneGraphFragmentWithPrototypeDeclarationsContentModel
+    {
+    }
+
+    public interface SceneGraphFragmentWithPrototypeDeclarationsContentModel
+    {
+    }
+
+    public interface ShapeChildContentModel
+    {
+    }
+
+    public interface SoundChildContentModel
+    {
+    }
+
+    public interface TextChildContentModel
+    {
+    }
+
+    public interface TextureBackgroundChildContentModel
+    {
+    }
+
+    public interface LayoutGroupContentModel
+    {
+    }
+
+    public interface RigidJointNodeContentModel
+    {
+    }
+
+    public interface RigidBodyContentModel
+    {
+    }
+
+    public interface RigidBodyCollectionContentModel
+    {
+    }
+}

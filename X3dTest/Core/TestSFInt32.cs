@@ -1,11 +1,11 @@
-﻿namespace X3dTest.Core
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Globalization;
-    using X3d.Core;
+﻿using System.Globalization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using X3d.Core;
 
+namespace X3dTest.Core
+{
     /// <summary>
-    /// <see cref="X3d.Core.SFInt32" /> unit test cases
+    ///     <see cref="X3d.Core.SFInt32" /> unit test cases
     /// </summary>
     [TestClass]
     public class TestSFInt32

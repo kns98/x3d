@@ -1,8 +1,8 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class Component : SceneGraphStructureNodeType
     {
         public const string ElementName = "component";
@@ -11,37 +11,31 @@
 
         public const string LevelAttributeName = "level";
 
+        private SFInt32 level;
+
         public Component()
         {
-            this.Name = ComponentNames.Core;
-            this.Level = 1;
+            Name = ComponentNames.Core;
+            Level = 1;
         }
 
         public Component(ComponentNames name, SFInt32 level)
         {
-            this.Name = name;
-            this.Level = level;
+            Name = name;
+            Level = level;
         }
 
         public ComponentNames Name { get; set; }
 
-        private SFInt32 level;
-
         public SFInt32 Level
         {
-            get
-            {
-                return this.level;
-            }
+            get => level;
 
             set
             {
-                if (value < 1 || value > 5)
-                {
-                    throw new FormatException();
-                }
+                if (value < 1 || value > 5) throw new FormatException();
 
-                this.level = value;
+                level = value;
             }
         }
 
@@ -49,8 +43,8 @@
         {
             writer.WriteStartElement(ElementName);
 
-            writer.WriteAttributeString(NameAttributeName, ComponentNamesConverter.ToString(this.Name));
-            writer.WriteAttributeString(LevelAttributeName, this.Level.ToString());
+            writer.WriteAttributeString(NameAttributeName, ComponentNamesConverter.ToString(Name));
+            writer.WriteAttributeString(LevelAttributeName, Level.ToString());
 
             writer.WriteEndElement();
         }

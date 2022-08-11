@@ -1,11 +1,11 @@
-﻿namespace X3dTest.Core
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
-    using X3d.Core;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using X3d.Core;
 
+namespace X3dTest.Core
+{
     /// <summary>
-    /// <see cref="X3d.Core.SFMatrix4d" /> unit test cases
+    ///     <see cref="X3d.Core.SFMatrix4d" /> unit test cases
     /// </summary>
     [TestClass]
     public class TestSFMatrix4d

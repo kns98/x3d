@@ -1,7 +1,7 @@
-﻿namespace X3d.Core
-{
-    using System.Text;
+﻿using System.Text;
 
+namespace X3d.Core
+{
     public abstract class X3DMatrixField<TPrimitive> : X3DField
         where TPrimitive : X3DPrimitiveField, new()
     {
@@ -15,19 +15,14 @@
 
         public override int GetHashCode()
         {
-            var hash = this.Elements[0, 0].GetHashCode();
+            var hash = Elements[0, 0].GetHashCode();
 
-            for (var row = 0; row < this.Elements.GetLength(0); row++)
+            for (var row = 0; row < Elements.GetLength(0); row++)
+            for (var col = 0; col < Elements.GetLength(1); col++)
             {
-                for (var col = 0; col < this.Elements.GetLength(1); col++)
-                {
-                    if (row == 0 && col == 0)
-                    {
-                        continue;
-                    }
+                if (row == 0 && col == 0) continue;
 
-                    hash ^= this.Elements[row, col].GetHashCode();
-                }
+                hash ^= Elements[row, col].GetHashCode();
             }
 
             return hash;
@@ -39,18 +34,12 @@
             {
                 var casted = (X3DMatrixField<TPrimitive>)obj;
 
-                if (this.Elements.GetLength(0) == casted.Elements.GetLength(0))
+                if (Elements.GetLength(0) == casted.Elements.GetLength(0))
                 {
-                    for (var row = 0; row < this.Elements.GetLength(0); row++)
-                    {
-                        for (var col = 0; col < this.Elements.GetLength(1); col++)
-                        {
-                            if (this.Elements[row, col] != casted.Elements[row, col])
-                            {
-                                return false;
-                            }
-                        }
-                    }
+                    for (var row = 0; row < Elements.GetLength(0); row++)
+                    for (var col = 0; col < Elements.GetLength(1); col++)
+                        if (Elements[row, col] != casted.Elements[row, col])
+                            return false;
 
                     return true;
                 }
@@ -67,13 +56,11 @@
         {
             var builder = new StringBuilder();
 
-            for (var row = 0; row < this.Elements.GetLength(0); row++)
+            for (var row = 0; row < Elements.GetLength(0); row++)
+            for (var col = 0; col < Elements.GetLength(1); col++)
             {
-                for (var col = 0; col < this.Elements.GetLength(1); col++)
-                {
-                    builder.Append(this.Elements[row, col]);
-                    builder.Append(' ');
-                }
+                builder.Append(Elements[row, col]);
+                builder.Append(' ');
             }
 
             return builder.ToString().TrimEnd(' ');
@@ -81,16 +68,12 @@
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ' ' };
+            var delimiter = new[] { ' ' };
             var tokens = str.Split(delimiter);
-            
-            for (var row = 0; row < this.Elements.GetLength(0); row++)
-            {
-                for (var col = 0; col < this.Elements.GetLength(1); col++)
-                {
-                    this.Elements[row, col].FromString(tokens[(row * this.Elements.GetLength(0)) + col]);
-                }
-            }
+
+            for (var row = 0; row < Elements.GetLength(0); row++)
+            for (var col = 0; col < Elements.GetLength(1); col++)
+                Elements[row, col].FromString(tokens[row * Elements.GetLength(0) + col]);
         }
 
         #endregion String Compatibility

@@ -1,7 +1,7 @@
-﻿namespace X3d.Core
-{
-    using System;
+﻿using System;
 
+namespace X3d.Core
+{
     public enum FieldTypeName
     {
         SFBool,
@@ -45,7 +45,7 @@
         SFMatrix4d,
         MFMatrix4d,
         SFMatrix4f,
-        MFMatrix4f,
+        MFMatrix4f
     }
 
     public static class FieldTypeNameConverter

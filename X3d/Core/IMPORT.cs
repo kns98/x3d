@@ -1,8 +1,8 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class Import : SceneGraphStructureNodeType, ChildContentModelSceneGraphStructure
     {
         public const string ElementName = "IMPORT";
@@ -12,49 +12,39 @@
         public const string ImportedDEFAttributeName = "importedDEF";
 
         public const string ASAttributeName = "AS";
- 
-        public Import()
-        {
-            this.InlineDEF = string.Empty;
-            this.ImportedDEF = string.Empty;
-            this.AS = null;
-        }
-
-        private string inlineDEF;
-        public string InlineDEF 
-        {
-            get
-            {
-                return this.inlineDEF;
-            }
-
-            set
-            {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
-
-                this.inlineDEF = value;
-            }
-        }
 
         private string importedDEF;
-        public string ImportedDEF
+
+        private string inlineDEF;
+
+        public Import()
         {
-            get
-            {
-                return this.importedDEF;
-            }
+            InlineDEF = string.Empty;
+            ImportedDEF = string.Empty;
+            AS = null;
+        }
+
+        public string InlineDEF
+        {
+            get => inlineDEF;
 
             set
             {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
+                if (value == null) throw new FormatException();
 
-                this.importedDEF = value;
+                inlineDEF = value;
+            }
+        }
+
+        public string ImportedDEF
+        {
+            get => importedDEF;
+
+            set
+            {
+                if (value == null) throw new FormatException();
+
+                importedDEF = value;
             }
         }
 
@@ -64,13 +54,10 @@
         {
             writer.WriteStartElement(ElementName);
 
-            writer.WriteAttributeString(InlineDEFAttributeName, this.InlineDEF);
-            writer.WriteAttributeString(ImportedDEFAttributeName, this.ImportedDEF);
-            
-            if (this.AS != null)
-            {
-                writer.WriteAttributeString(ASAttributeName, this.AS);
-            }
+            writer.WriteAttributeString(InlineDEFAttributeName, InlineDEF);
+            writer.WriteAttributeString(ImportedDEFAttributeName, ImportedDEF);
+
+            if (AS != null) writer.WriteAttributeString(ASAttributeName, AS);
 
             writer.WriteEndElement();
         }

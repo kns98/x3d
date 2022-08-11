@@ -1,12 +1,12 @@
-﻿namespace X3dTest.Core
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
-    using System.Globalization;
-    using X3d.Core;
+﻿using System;
+using System.Globalization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using X3d.Core;
 
+namespace X3dTest.Core
+{
     /// <summary>
-    /// <see cref="X3d.Core.SFDouble" /> unit test cases
+    ///     <see cref="X3d.Core.SFDouble" /> unit test cases
     /// </summary>
     [TestClass]
     public class TestSFDouble

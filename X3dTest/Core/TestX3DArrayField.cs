@@ -1,8 +1,8 @@
-﻿namespace X3dTest.Core
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using X3d.Core;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using X3d.Core;
 
+namespace X3dTest.Core
+{
     [TestClass]
     public class TestX3DArrayField
     {

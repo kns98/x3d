@@ -31,11 +31,12 @@
 #
 -->
 
-<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.1.0">
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" version="3.1.0">
 
-<!-- construction note:  unlike xs:element, xs:attributeGroup constructs from parent schema not referencable -->
+	<!-- construction note:  unlike xs:element, xs:attributeGroup constructs from parent schema not referencable -->
 
-<!-- ================================================================= -->
+	<!-- ================================================================= -->
 
 	<!-- enter element and attribute definitions here -->
 
@@ -44,49 +45,49 @@
 	<xs:simpleType name="XvlShell.shellTypes">
 		<xs:annotation>
 			<xs:appinfo></xs:appinfo>
-			<xs:documentation source=""/>
+			<xs:documentation source="" />
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="POLYGON_MESH"/>
-			<xs:enumeration value="LATTICE_MESH"/>
+			<xs:enumeration value="POLYGON_MESH" />
+			<xs:enumeration value="LATTICE_MESH" />
 		</xs:restriction>
 	</xs:simpleType>
 
 	<xs:element name="XvlShell">
 		<xs:annotation>
-			<xs:appinfo/>
-			<xs:documentation source=""/>
+			<xs:appinfo />
+			<xs:documentation source="" />
 		</xs:annotation>
 		<xs:complexType mixed="false">
 			<xs:sequence>
-				<xs:element ref="IS" minOccurs="0"/>
+				<xs:element ref="IS" minOccurs="0" />
 				<xs:choice minOccurs="0">
-					<xs:element ref="MetadataDouble"/>
-					<xs:element ref="MetadataFloat"/>
-					<xs:element ref="MetadataInteger"/>
-					<xs:element ref="MetadataSet"/>
-					<xs:element ref="MetadataString"/>
+					<xs:element ref="MetadataDouble" />
+					<xs:element ref="MetadataFloat" />
+					<xs:element ref="MetadataInteger" />
+					<xs:element ref="MetadataSet" />
+					<xs:element ref="MetadataString" />
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute name="DEF" type="xs:ID"/>
-			<xs:attribute name="USE" type="xs:IDREF"/>
+			<xs:attribute name="DEF" type="xs:ID" />
+			<xs:attribute name="USE" type="xs:IDREF" />
 			<!--X3DGeometryNode-->
-			<xs:attribute name="shellType" type="XvlShell.shellTypes"/>
-			<xs:attribute name="numberOfDivisions" type="SFInt32"/>
-			<xs:attribute name="vertexRound" type="MFFloat"/>
-			<xs:attribute name="edgeBeginCoordIndex" type="MFInt32"/>
-			<xs:attribute name="edgeEndCoordIndex" type="MFInt32"/>
-			<xs:attribute name="edgeRound" type="MFFloat"/>
-			<xs:attribute name="edgeBeginVector" type="MFVec3f"/>
-			<xs:attribute name="edgeEndVector" type="MFVec3f"/>
-			<xs:attribute name="faceCoordIndex" type="MFInt32"/>
-			<xs:attribute name="faceTexCoordIndex" type="MFInt32"/>
-			<xs:attribute name="faceEmpty" type="MFBool"/>
-			<xs:attribute name="faceHidden" type="MFBool"/>
-			<xs:attribute name="containerField" type="xs:NMTOKEN" default="geometry"/>
+			<xs:attribute name="shellType" type="XvlShell.shellTypes" />
+			<xs:attribute name="numberOfDivisions" type="SFInt32" />
+			<xs:attribute name="vertexRound" type="MFFloat" />
+			<xs:attribute name="edgeBeginCoordIndex" type="MFInt32" />
+			<xs:attribute name="edgeEndCoordIndex" type="MFInt32" />
+			<xs:attribute name="edgeRound" type="MFFloat" />
+			<xs:attribute name="edgeBeginVector" type="MFVec3f" />
+			<xs:attribute name="edgeEndVector" type="MFVec3f" />
+			<xs:attribute name="faceCoordIndex" type="MFInt32" />
+			<xs:attribute name="faceTexCoordIndex" type="MFInt32" />
+			<xs:attribute name="faceEmpty" type="MFBool" />
+			<xs:attribute name="faceHidden" type="MFBool" />
+			<xs:attribute name="containerField" type="xs:NMTOKEN" default="geometry" />
 		</xs:complexType>
 	</xs:element>
 
-<!-- ================================================================= -->
+	<!-- ================================================================= -->
 
 </xs:schema>

@@ -1,8 +1,8 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class X3D : SceneGraphStructureNodeType
     {
         public const string ElementName = "X3D";
@@ -11,35 +11,30 @@
 
         public const string ProfileAttributeName = "profile";
 
+        private Scene scene;
+
         public X3D()
         {
-            this.Head = null;
-            this.Scene = new Scene();
-            this.Version = X3DVersion.X3D_3_2;
-            this.Profile = ProfileNames.Core;
+            Head = null;
+            Scene = new Scene();
+            Version = X3DVersion.X3D_3_2;
+            Profile = ProfileNames.Core;
         }
 
         public Head Head { get; set; }
 
-        private Scene scene;
         public Scene Scene
         {
-            get
-            {
-                return this.scene;
-            }
+            get => scene;
 
             set
             {
-                if (value == null)
-                {
-                    throw new NullReferenceException();
-                }
+                if (value == null) throw new NullReferenceException();
 
-                this.scene = value;
+                scene = value;
             }
-        } 
-        
+        }
+
 
         public X3DVersion Version { get; set; }
 
@@ -50,17 +45,14 @@
             writer.WriteStartElement(ElementName);
 
             writer.WriteAttributeString(VersionAttributeName,
-                                        X3DVersionConverter.ToString(this.Version));
+                X3DVersionConverter.ToString(Version));
 
             writer.WriteAttributeString(ProfileAttributeName,
-                                        ProfileNamesConverter.ToString(this.Profile));
+                ProfileNamesConverter.ToString(Profile));
 
-            if (this.Head != null)
-            {
-                this.Head.Write(writer);
-            }
+            if (Head != null) Head.Write(writer);
 
-            this.Scene.Write(writer);
+            Scene.Write(writer);
 
             writer.WriteEndElement();
         }

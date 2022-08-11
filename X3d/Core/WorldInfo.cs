@@ -1,16 +1,15 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System.Xml;
 
+namespace X3d.Core
+{
     /// <summary>
-    /// The WorldInfo node contains information about the world. This node is 
-    /// strictly for documentation purposes and has no effect on the visual 
-    /// appearance or behavior of the world. The title field is intended to 
-    /// store the name or title of the world so that browsers can present this 
-    /// to the user (perhaps in the window border). Any other information about 
-    /// the world can be stored in the info field, such as author information, 
-    /// copyright, and usage instructions.
+    ///     The WorldInfo node contains information about the world. This node is
+    ///     strictly for documentation purposes and has no effect on the visual
+    ///     appearance or behavior of the world. The title field is intended to
+    ///     store the name or title of the world so that browsers can present this
+    ///     to the user (perhaps in the window border). Any other information about
+    ///     the world can be stored in the info field, such as author information,
+    ///     copyright, and usage instructions.
     /// </summary>
     public class WorldInfo : X3DInfoNode, ChildContentModelInterchange
     {
@@ -22,9 +21,9 @@
 
         public WorldInfo()
         {
-            this.ContainerField = null;
-            this.Info = null;
-            this.Title = null;
+            ContainerField = null;
+            Info = null;
+            Title = null;
         }
 
         public MFString Info { get; set; }
@@ -35,15 +34,9 @@
         {
             base.WriteAttributes(writer);
 
-            if (this.Info != null)
-            {
-                writer.WriteAttributeString(InfoAttributeName, this.Info.ToString());
-            }
+            if (Info != null) writer.WriteAttributeString(InfoAttributeName, Info.ToString());
 
-            if (this.Title != null)
-            {
-                writer.WriteAttributeString(TitleAttributeName, this.Title.ToString());
-            }
+            if (Title != null) writer.WriteAttributeString(TitleAttributeName, Title.ToString());
         }
 
         public override void Write(XmlWriter writer)

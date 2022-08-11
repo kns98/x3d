@@ -1,34 +1,29 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class ProtoInterface : SceneGraphStructureNodeType
     {
         public const string ElementName = "ProtoInterface";
 
+        private List<Field> fields;
+
         public ProtoInterface()
         {
-            this.Fields = new List<Field>();    
+            Fields = new List<Field>();
         }
 
-        private List<Field> fields; 
         public List<Field> Fields
         {
-            get
-            {
-                return this.fields;
-            }
+            get => fields;
 
             set
             {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
+                if (value == null) throw new FormatException();
 
-                this.fields = value;
+                fields = value;
             }
         }
 
@@ -36,10 +31,7 @@
         {
             writer.WriteStartElement(ElementName);
 
-            foreach (var item in Fields)
-            {
-                item.Write(writer);
-            }
+            foreach (var item in Fields) item.Write(writer);
 
             writer.WriteEndElement();
         }

@@ -1,11 +1,9 @@
-﻿namespace X3dTest.Core
+﻿using System.Xml;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using X3d.Core;
+
+namespace X3dTest.Core
 {
-    using System.Xml;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    using X3d.Core;
-
     [TestClass]
     public class TestXMLWriter
     {
@@ -28,9 +26,9 @@
         public void Write_Simple()
         {
             const string file = @"..\..\..\Sample\Core\simple.x3d";
-            
+
             var x3d = new X3D();
-        
+
             Write(file, x3d);
         }
 
@@ -146,7 +144,7 @@
             meta1.Name = "double";
             meta1.Value = "1 1 1 1 1";
             meta1.Reference = "reference";
-            
+
             scene.ChildNodes.Add(meta1);
             scene.ChildNodes.Add(meta2);
             scene.ChildNodes.Add(meta3);
@@ -162,7 +160,7 @@
             meta4.Value.Add(submeta2);
             meta4.Value.Add(submeta3);
             meta4.Value.Add(submeta4);
-            
+
             Write(file, x3d);
         }
 

@@ -1,54 +1,44 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class Head : SceneGraphStructureNodeType
     {
         public const string ElementName = "head";
 
-        public Head()
-        {
-            this.Components = new List<Component>();
-            this.Meta = new List<Meta>();
-        }
-
         private List<Component> components;
-        public List<Component> Components 
-        {
-            get
-            {
-                return this.components;
-            }
-
-            set
-            {
-                if (value == null)
-                {
-                    throw new NullReferenceException();
-                }
-
-                this.components = value;
-            }
-        }
 
         private List<Meta> meta;
-        public List<Meta> Meta
+
+        public Head()
         {
-            get
-            {
-                return this.meta;
-            }
+            Components = new List<Component>();
+            Meta = new List<Meta>();
+        }
+
+        public List<Component> Components
+        {
+            get => components;
 
             set
             {
-                if (value == null)
-                {
-                    throw new NullReferenceException();
-                }
+                if (value == null) throw new NullReferenceException();
 
-                this.meta = value;
+                components = value;
+            }
+        }
+
+        public List<Meta> Meta
+        {
+            get => meta;
+
+            set
+            {
+                if (value == null) throw new NullReferenceException();
+
+                meta = value;
             }
         }
 
@@ -56,15 +46,9 @@
         {
             writer.WriteStartElement(ElementName);
 
-            foreach (var item in components)
-            {
-                item.Write(writer);
-            }
+            foreach (var item in components) item.Write(writer);
 
-            foreach (var item in meta)
-            {
-                item.Write(writer);
-            }
+            foreach (var item in meta) item.Write(writer);
 
             writer.WriteEndElement();
         }

@@ -1,10 +1,10 @@
-﻿namespace X3d.Core
-{
-    using System.Xml;
+﻿using System.Xml;
 
+namespace X3d.Core
+{
     /// <summary>
-    /// The metadata provided by this node is contained in the double-precision 
-    /// floating point numbers of the value field.
+    ///     The metadata provided by this node is contained in the double-precision
+    ///     floating point numbers of the value field.
     /// </summary>
     public class MetadataDouble : X3DMetadataObject<MFDouble>
     {
@@ -14,10 +14,7 @@
         {
             base.WriteAttributes(writer);
 
-            if (this.Value.Count > 0)
-            {
-                writer.WriteAttributeString(ValueAttributeName, this.Value.ToString());
-            }
+            if (Value.Count > 0) writer.WriteAttributeString(ValueAttributeName, Value.ToString());
         }
 
         public override void Write(XmlWriter writer)

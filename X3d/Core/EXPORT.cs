@@ -1,8 +1,8 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class Export : SceneGraphStructureNodeType, ChildContentModelSceneGraphStructure
     {
         public const string ElementName = "IMPORT";
@@ -10,29 +10,24 @@
         public const string LocalDEFAttributeName = "localDEF";
 
         public const string ASAttributeName = "AS";
- 
-        public Export()
-        {
-            this.LocalDEF = string.Empty;
-            this.AS = null;
-        }
 
         private string localDEF;
-        public string LocalDEF 
+
+        public Export()
         {
-            get
-            {
-                return this.localDEF;
-            }
+            LocalDEF = string.Empty;
+            AS = null;
+        }
+
+        public string LocalDEF
+        {
+            get => localDEF;
 
             set
             {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
+                if (value == null) throw new FormatException();
 
-                this.localDEF = value;
+                localDEF = value;
             }
         }
 
@@ -42,12 +37,9 @@
         {
             writer.WriteStartElement(ElementName);
 
-            writer.WriteAttributeString(LocalDEFAttributeName, this.LocalDEF);
-            
-            if (this.AS != null)
-            {
-                writer.WriteAttributeString(ASAttributeName, this.AS);
-            }
+            writer.WriteAttributeString(LocalDEFAttributeName, LocalDEF);
+
+            if (AS != null) writer.WriteAttributeString(ASAttributeName, AS);
 
             writer.WriteEndElement();
         }

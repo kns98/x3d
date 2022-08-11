@@ -1,8 +1,8 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System;
+using System.Xml;
 
+namespace X3d.Core
+{
     /*
      * <xs:group name="ChildContentModelSceneGraphStructure">
     <xs:choice>
@@ -15,33 +15,28 @@
     {
         public const string NameAttributeName = "name";
 
+        private string name;
+
         protected X3DPrototype()
         {
-            this.name = string.Empty;
+            name = string.Empty;
         }
 
-        private string name;
         public string Name
         {
-            get
-            {
-                return this.name;
-            }
+            get => name;
 
             set
             {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
+                if (value == null) throw new FormatException();
 
-                this.name = value;
+                name = value;
             }
         }
 
         protected virtual void WriteAttributes(XmlWriter writer)
         {
-            writer.WriteAttributeString(NameAttributeName, this.Name);
+            writer.WriteAttributeString(NameAttributeName, Name);
         }
 
         protected virtual void WriteChildElements(XmlWriter writer)
@@ -50,8 +45,8 @@
 
         public virtual void Write(XmlWriter writer)
         {
-            this.WriteAttributes(writer);
-            this.WriteChildElements(writer);
+            WriteAttributes(writer);
+            WriteChildElements(writer);
         }
     }
 }

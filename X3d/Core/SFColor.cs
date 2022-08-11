@@ -1,12 +1,12 @@
-﻿namespace X3d.Core
-{
-    using System;
+﻿using System;
 
+namespace X3d.Core
+{
     /// <summary>
-    /// The SFColor field specifies one RGB (red-green-blue) color triple.
-    /// Each color is written to the X3D file as an RGB triple of floating
-    /// point numbers in the range 0.0 to 1.0. The default value of an
-    /// uninitialized SFColor field is (0 0 0).
+    ///     The SFColor field specifies one RGB (red-green-blue) color triple.
+    ///     Each color is written to the X3D file as an RGB triple of floating
+    ///     point numbers in the range 0.0 to 1.0. The default value of an
+    ///     uninitialized SFColor field is (0 0 0).
     /// </summary>
     public class SFColor : SFVec3f
     {
@@ -24,49 +24,30 @@
 
         public SFFloat Red
         {
-            get
-            {
-                return this.X;
-            }
+            get => X;
 
-            set
-            {
-                this.X = ValidateValueRange(value);
-            }
+            set => X = ValidateValueRange(value);
         }
 
         public SFFloat Green
         {
-            get
-            {
-                return this.Y;
-            }
+            get => Y;
 
-            set
-            {
-                this.Y = ValidateValueRange(value);
-            }
+            set => Y = ValidateValueRange(value);
         }
 
         public SFFloat Blue
         {
-            get
-            {
-                return this.Z;
-            }
+            get => Z;
 
-            set
-            {
-                this.Z = ValidateValueRange(value);
-            }
+            set => Z = ValidateValueRange(value);
         }
 
         private static float ValidateValueRange(float value)
         {
             if (value < 0.0f || value > 1.0f)
-            {
-                throw new ArgumentOutOfRangeException(string.Format("SFColor Red component value range is from 0.0 to 1.0. Given value = {0}", value));
-            }
+                throw new ArgumentOutOfRangeException(
+                    string.Format("SFColor Red component value range is from 0.0 to 1.0. Given value = {0}", value));
 
             return value;
         }

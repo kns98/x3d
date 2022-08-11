@@ -1,7 +1,7 @@
-﻿namespace X3d.Core
-{
-    using System.Xml;
+﻿using System.Xml;
 
+namespace X3d.Core
+{
     public class ProtoDeclare : X3DPrototype, ChildContentModelSceneGraphStructure
     {
         public const string ElementName = "ProtoDeclare";
@@ -12,10 +12,10 @@
 
         public ProtoDeclare()
         {
-            this.Interface = null;
-            this.Body = null;
-            this.AppInfo = null;
-            this.Documentation = null;
+            Interface = null;
+            Body = null;
+            AppInfo = null;
+            Documentation = null;
         }
 
         public ProtoInterface Interface { get; set; }
@@ -30,30 +30,19 @@
         {
             base.WriteAttributes(writer);
 
-            if (this.AppInfo != null)
-            {
-                writer.WriteAttributeString(AppInfoAttributeName, this.AppInfo.ToString());
-            }
+            if (AppInfo != null) writer.WriteAttributeString(AppInfoAttributeName, AppInfo.ToString());
 
-            if (this.Documentation != null)
-            {
-                writer.WriteAttributeString(DocumentationAttributeName, this.Documentation.ToString());
-            }
+            if (Documentation != null)
+                writer.WriteAttributeString(DocumentationAttributeName, Documentation.ToString());
         }
 
         protected override void WriteChildElements(XmlWriter writer)
         {
             base.WriteChildElements(writer);
 
-            if (this.Interface != null)
-            {
-                this.Interface.Write(writer);
-            }
+            if (Interface != null) Interface.Write(writer);
 
-            if (this.Body != null)
-            {
-                this.Body.Write(writer);
-            }
+            if (Body != null) Body.Write(writer);
         }
 
         public override void Write(XmlWriter writer)

@@ -1,11 +1,11 @@
-﻿namespace X3dTest.Core
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
-    using X3d.Core;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using X3d.Core;
 
+namespace X3dTest.Core
+{
     /// <summary>
-    /// <see cref="X3d.Core.SFColorRGBA" /> unit test cases
+    ///     <see cref="X3d.Core.SFColorRGBA" /> unit test cases
     /// </summary>
     [TestClass]
     public class TestSFColorRGBA

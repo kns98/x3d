@@ -1,9 +1,9 @@
-﻿namespace X3dTest.Core
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
-    using X3d.Core;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using X3d.Core;
 
+namespace X3dTest.Core
+{
     [TestClass]
     public class TestSFVec2f
     {

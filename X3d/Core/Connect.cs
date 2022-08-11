@@ -1,8 +1,8 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class Connect : SceneGraphStructureNodeType
     {
         public const string ElementName = "connect";
@@ -11,47 +11,37 @@
 
         public const string ProtoFieldAttributeName = "protoField";
 
-        public Connect()
-        {
-            this.NodeField = string.Empty;
-            this.ProtoField = string.Empty;
-        }
-
         private string nodeField;
-        public string NodeField 
-        {
-            get
-            {
-                return this.nodeField;
-            }
-
-            set
-            {
-                if (value == null)
-                {
-                    throw new NullReferenceException();
-                }
-
-                this.nodeField = value;
-            }
-        }
 
         private string protoField;
-        public string ProtoField 
+
+        public Connect()
         {
-            get
-            {
-                return this.protoField;
-            }
+            NodeField = string.Empty;
+            ProtoField = string.Empty;
+        }
+
+        public string NodeField
+        {
+            get => nodeField;
 
             set
             {
-                if (value == null)
-                {
-                    throw new NullReferenceException();
-                }
+                if (value == null) throw new NullReferenceException();
 
-                this.protoField = value;
+                nodeField = value;
+            }
+        }
+
+        public string ProtoField
+        {
+            get => protoField;
+
+            set
+            {
+                if (value == null) throw new NullReferenceException();
+
+                protoField = value;
             }
         }
 
@@ -59,8 +49,8 @@
         {
             writer.WriteStartElement(ElementName);
 
-            writer.WriteAttributeString(NodeFieldAttributeName, this.NodeField);
-            writer.WriteAttributeString(ProtoFieldAttributeName, this.ProtoField);
+            writer.WriteAttributeString(NodeFieldAttributeName, NodeField);
+            writer.WriteAttributeString(ProtoFieldAttributeName, ProtoField);
 
             writer.WriteEndElement();
         }

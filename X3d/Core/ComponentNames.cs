@@ -1,7 +1,7 @@
-﻿namespace X3d.Core
-{
-    using System;
+﻿using System;
 
+namespace X3d.Core
+{
     public enum ComponentNames
     {
         Core,

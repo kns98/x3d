@@ -1,7 +1,7 @@
-﻿namespace X3d.Core
-{
-    using System;
+﻿using System;
 
+namespace X3d.Core
+{
     public enum MetaDirectionValues
     {
         RightToLeft,
@@ -16,17 +16,10 @@
         public static MetaDirectionValues FromString(string str)
         {
             if (str.Equals(RightToLeftString))
-            {
                 return MetaDirectionValues.RightToLeft;
-            }
-            else if (str.Equals(RightToLeftString))
-            {
+            if (str.Equals(RightToLeftString))
                 return MetaDirectionValues.LeftToRight;
-            }
-            else
-            {
-                throw new FormatException();
-            }
+            throw new FormatException();
         }
 
         public static string ToString(MetaDirectionValues? value)

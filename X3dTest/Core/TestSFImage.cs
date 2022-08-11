@@ -1,11 +1,11 @@
-﻿namespace X3dTest.Core
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
-    using X3d.Core;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using X3d.Core;
 
+namespace X3dTest.Core
+{
     /// <summary>
-    /// <see cref="X3d.Core.SFImage" /> unit test cases
+    ///     <see cref="X3d.Core.SFImage" /> unit test cases
     /// </summary>
     [TestClass]
     public class TestSFImage
@@ -14,23 +14,16 @@
 
         private static SFImage GenerateTestImage(SFImageComponentSize size)
         {
-            if (size == SFImageComponentSize.Unknown)
-            {
-                return new SFImage();
-            }
+            if (size == SFImageComponentSize.Unknown) return new SFImage();
 
             const int width = 100;
             const int height = 100;
             var components = (int)size;
-            var pixels = new byte[components, (width * height)];
+            var pixels = new byte[components, width * height];
 
             for (var component = 0; component < components; component++)
-            {
-                for (var pos = 0; pos < (width * height); pos++)
-                {
-                    pixels[component, pos] = (byte)(pos % 255);
-                }
-            }
+            for (var pos = 0; pos < width * height; pos++)
+                pixels[component, pos] = (byte)(pos % 255);
 
             return new SFImage(size, width, height, pixels);
         }

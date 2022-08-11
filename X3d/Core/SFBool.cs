@@ -1,11 +1,11 @@
-﻿namespace X3d.Core
-{
-    using System;
+﻿using System;
 
+namespace X3d.Core
+{
     /// <summary>
-    /// The SFBool field specifies a single Boolean value. Each Boolean value
-    /// represents either TRUE or FALSE. How these values are represented is
-    /// encoding dependent.
+    ///     The SFBool field specifies a single Boolean value. Each Boolean value
+    ///     represents either TRUE or FALSE. How these values are represented is
+    ///     encoding dependent.
     /// </summary>
     public class SFBool : X3DPrimitiveField<bool>
     {
@@ -17,17 +17,17 @@
 
         public SFBool()
         {
-            this.Primitive = false;
+            Primitive = false;
         }
 
         public SFBool(bool value)
         {
-            this.Primitive = value;
+            Primitive = value;
         }
 
         public SFBool(SFBool obj)
         {
-            this.Primitive = obj.Primitive;
+            Primitive = obj.Primitive;
         }
 
         #endregion Constructors
@@ -50,23 +50,17 @@
 
         public override string ToString()
         {
-            return this.Primitive ? TrueString : FalseString;
+            return Primitive ? TrueString : FalseString;
         }
 
         public override void FromString(string str)
         {
             if (str.Equals(TrueString))
-            {
-                this.Primitive = true;
-            }
+                Primitive = true;
             else if (str.Equals(FalseString))
-            {
-                this.Primitive = false;
-            }
+                Primitive = false;
             else
-            {
                 throw new FormatException(string.Format("Invalid Boolean string [{0}]", str));
-            }
         }
 
         #endregion

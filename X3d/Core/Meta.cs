@@ -1,8 +1,8 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class Meta : SceneGraphStructureNodeType
     {
         public const string ElementName = "meta";
@@ -19,34 +19,29 @@
 
         public const string SchemeAttributeName = "scheme";
 
+        private SFString content;
+
         public Meta()
         {
-            this.Name = null;
-            this.Content = string.Empty;
-            this.Direction = null;
-            this.HttpEquivalant = null;
-            this.Language = null;
-            this.Scheme = null;
+            Name = null;
+            Content = string.Empty;
+            Direction = null;
+            HttpEquivalant = null;
+            Language = null;
+            Scheme = null;
         }
 
         public SFString Name { get; set; }
 
-        private SFString content;
         public SFString Content
         {
-            get
-            {
-                return content;
-            }
+            get => content;
 
             set
             {
-                if (value == null)
-                {
-                    throw new NullReferenceException();
-                }
+                if (value == null) throw new NullReferenceException();
 
-                this.content = value;
+                content = value;
             }
         }
 
@@ -62,32 +57,18 @@
         {
             writer.WriteStartElement(ElementName);
 
-            if (this.Name != null)
-            {
-                writer.WriteAttributeString(NameAttributeName, this.Name);
-            }
+            if (Name != null) writer.WriteAttributeString(NameAttributeName, Name);
 
-            writer.WriteAttributeString(ContentAttributeName, this.Content);
+            writer.WriteAttributeString(ContentAttributeName, Content);
 
-            if (this.Direction != null)
-            {
-                writer.WriteAttributeString(DirectionAttributeName, MetaDirectionValuesConverter.ToString(this.Direction));
-            }
+            if (Direction != null)
+                writer.WriteAttributeString(DirectionAttributeName, MetaDirectionValuesConverter.ToString(Direction));
 
-            if (this.HttpEquivalant != null)
-            {
-                writer.WriteAttributeString(HttpEquivalantAttributeName, this.HttpEquivalant);
-            }
+            if (HttpEquivalant != null) writer.WriteAttributeString(HttpEquivalantAttributeName, HttpEquivalant);
 
-            if (this.Language != null)
-            {
-                writer.WriteAttributeString(LanguageAttributeName, this.Language);    
-            }
+            if (Language != null) writer.WriteAttributeString(LanguageAttributeName, Language);
 
-            if (this.Scheme != null)
-            {
-                writer.WriteAttributeString(SchemeAttributeName, this.Scheme);    
-            }
+            if (Scheme != null) writer.WriteAttributeString(SchemeAttributeName, Scheme);
 
             writer.WriteEndElement();
         }

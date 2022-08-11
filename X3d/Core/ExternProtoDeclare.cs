@@ -1,9 +1,9 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class ExternProtoDeclare : X3DPrototype, ChildContentModelSceneGraphStructure
     {
         public const string ElementName = "ExternProtoDeclare";
@@ -14,49 +14,39 @@
 
         public const string DocumentationAttributeName = "documentation";
 
-        public ExternProtoDeclare() : base()
-        {
-            this.Fields = new List<Field>();
-            this.URL = new MFString();
-            this.AppInfo = null;
-            this.Documentation = null;
-        }
-
         private List<Field> fields;
-        public List<Field> Fields
-        {
-            get
-            {
-                return this.fields;
-            }
-
-            set
-            {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
-
-                this.fields = value;
-            }
-        }
 
         private MFString url;
-        public MFString URL
+
+        public ExternProtoDeclare()
         {
-            get
-            {
-                return this.url;
-            }
+            Fields = new List<Field>();
+            URL = new MFString();
+            AppInfo = null;
+            Documentation = null;
+        }
+
+        public List<Field> Fields
+        {
+            get => fields;
 
             set
             {
-                if (value == null)
-                {
-                    throw new FormatException();
-                }
+                if (value == null) throw new FormatException();
 
-                this.url = value;
+                fields = value;
+            }
+        }
+
+        public MFString URL
+        {
+            get => url;
+
+            set
+            {
+                if (value == null) throw new FormatException();
+
+                url = value;
             }
         }
 
@@ -68,27 +58,19 @@
         {
             base.WriteAttributes(writer);
 
-            writer.WriteAttributeString(URLAttributeName, this.URL.ToString());
+            writer.WriteAttributeString(URLAttributeName, URL.ToString());
 
-            if (this.AppInfo != null)
-            {
-                writer.WriteAttributeString(AppInfoAttributeName, this.AppInfo.ToString());
-            }
+            if (AppInfo != null) writer.WriteAttributeString(AppInfoAttributeName, AppInfo.ToString());
 
-            if (this.Documentation != null)
-            {
-                writer.WriteAttributeString(DocumentationAttributeName, this.Documentation.ToString());
-            }
+            if (Documentation != null)
+                writer.WriteAttributeString(DocumentationAttributeName, Documentation.ToString());
         }
 
         protected override void WriteChildElements(XmlWriter writer)
         {
             base.WriteChildElements(writer);
 
-            foreach (var item in fields)
-            {
-                item.Write(writer);
-            }
+            foreach (var item in fields) item.Write(writer);
         }
 
         public override void Write(XmlWriter writer)

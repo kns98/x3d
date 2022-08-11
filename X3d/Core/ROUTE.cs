@@ -1,93 +1,69 @@
-﻿namespace X3d.Core
-{
-    using System;
-    using System.Xml;
+﻿using System;
+using System.Xml;
 
+namespace X3d.Core
+{
     public class Route : SceneGraphStructureNodeType, ChildContentModelSceneGraphStructure
     {
-        public Route()
-        {
-        }
-
         public const string ElementName = "ROUTE";
         public const string FromNodeAttributeName = "fromNode";
         public const string FromFieldAttributeName = "fromField";
         public const string ToNodeAttributeName = "toNode";
         public const string ToFieldAttributeName = "toField";
 
-        private string fromNode;
-        public string FromNode
-        {
-            get
-            {
-                return this.fromNode;
-            }
-            
-            set
-            {
-                if (this.fromNode == null)
-                {
-                    throw new FormatException();
-                }
-
-                this.fromNode = value;
-            }
-        }
-
         private string fromField;
-        public string FromField
-        {
-            get
-            {
-                return this.fromField;
-            }
 
-            set
-            {
-                if (this.fromField == null)
-                {
-                    throw new FormatException();
-                }
-
-                this.fromField = value;
-            }
-        }
-
-        private string toNode;
-        public string ToNode
-        {
-            get
-            {
-                return this.toNode;
-            }
-
-            set
-            {
-                if (this.toNode == null)
-                {
-                    throw new FormatException();
-                }
-
-                this.toNode = value;
-            }
-        }
+        private string fromNode;
 
         private string toField;
-        public string ToField
+
+        private string toNode;
+
+        public string FromNode
         {
-            get
-            {
-                return this.toField;
-            }
+            get => fromNode;
 
             set
             {
-                if (this.toField == null)
-                {
-                    throw new FormatException();
-                }
+                if (fromNode == null) throw new FormatException();
 
-                this.toField = value;
+                fromNode = value;
+            }
+        }
+
+        public string FromField
+        {
+            get => fromField;
+
+            set
+            {
+                if (fromField == null) throw new FormatException();
+
+                fromField = value;
+            }
+        }
+
+        public string ToNode
+        {
+            get => toNode;
+
+            set
+            {
+                if (toNode == null) throw new FormatException();
+
+                toNode = value;
+            }
+        }
+
+        public string ToField
+        {
+            get => toField;
+
+            set
+            {
+                if (toField == null) throw new FormatException();
+
+                toField = value;
             }
         }
 
@@ -95,10 +71,10 @@
         {
             writer.WriteStartElement(ElementName);
 
-            writer.WriteAttributeString(FromNodeAttributeName, this.FromNode);
-            writer.WriteAttributeString(FromFieldAttributeName, this.FromField);
-            writer.WriteAttributeString(ToNodeAttributeName, this.ToNode);
-            writer.WriteAttributeString(ToFieldAttributeName, this.ToField);
+            writer.WriteAttributeString(FromNodeAttributeName, FromNode);
+            writer.WriteAttributeString(FromFieldAttributeName, FromField);
+            writer.WriteAttributeString(ToNodeAttributeName, ToNode);
+            writer.WriteAttributeString(ToFieldAttributeName, ToField);
 
             writer.WriteEndElement();
         }

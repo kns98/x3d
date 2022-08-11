@@ -1,27 +1,27 @@
 ﻿namespace X3d.Core
 {
     /// <summary>
-    /// X3DVec2Field represents the second dimensional vector data structure.
+    ///     X3DVec2Field represents the second dimensional vector data structure.
     /// </summary>
     /// <typeparam name="TPrimitive">Vector element type</typeparam>
     public abstract class X3DVec2Field<TPrimitive> : X3DField
         where TPrimitive : X3DPrimitiveField, new()
     {
         protected static readonly int[] HashTablePrimeNumbers
-            = new int[] { 73856093, 19349663, 83492791, 39916801 };
+            = { 73856093, 19349663, 83492791, 39916801 };
 
         #region Constructors
 
         protected X3DVec2Field()
         {
-            this.Elements = new TPrimitive[2];
+            Elements = new TPrimitive[2];
         }
 
         protected X3DVec2Field(TPrimitive x, TPrimitive y)
             : this()
         {
-            this.Elements[0] = x;
-            this.Elements[1] = y;
+            Elements[0] = x;
+            Elements[1] = y;
         }
 
         #endregion Constructors
@@ -32,28 +32,16 @@
 
         public TPrimitive X
         {
-            get
-            {
-                return this.Elements[0];
-            }
+            get => Elements[0];
 
-            set
-            {
-                this.Elements[0] = value;
-            }
+            set => Elements[0] = value;
         }
 
         public TPrimitive Y
         {
-            get
-            {
-                return this.Elements[1];
-            }
+            get => Elements[1];
 
-            set
-            {
-                this.Elements[1] = value;
-            }
+            set => Elements[1] = value;
         }
 
         #endregion Vector Element Accessors
@@ -62,8 +50,8 @@
 
         public override int GetHashCode()
         {
-            var x = this.X.GetHashCode() * HashTablePrimeNumbers[0];
-            var y = this.Y.GetHashCode() * HashTablePrimeNumbers[1];
+            var x = X.GetHashCode() * HashTablePrimeNumbers[0];
+            var y = Y.GetHashCode() * HashTablePrimeNumbers[1];
 
             return x ^ y;
         }
@@ -74,7 +62,7 @@
             {
                 var casted = (X3DVec2Field<TPrimitive>)obj;
 
-                return this.X.Equals(casted.X) && this.Y.Equals(casted.Y);
+                return X.Equals(casted.X) && Y.Equals(casted.Y);
             }
 
             return false;
@@ -86,16 +74,16 @@
 
         public override string ToString()
         {
-            return string.Format("{0} {1}", this.X, this.Y);
+            return string.Format("{0} {1}", X, Y);
         }
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ' ' };
+            var delimiter = new[] { ' ' };
             var tokens = str.Split(delimiter);
 
-            this.X.FromString(tokens[0]);
-            this.Y.FromString(tokens[1]);
+            X.FromString(tokens[0]);
+            Y.FromString(tokens[1]);
         }
 
         #endregion String Compatibility
@@ -104,45 +92,39 @@
     public abstract class X3DVec3Field<TPrimitive> : X3DVec2Field<TPrimitive>
         where TPrimitive : X3DPrimitiveField, new()
     {
+        #region Vector Element Accessors
+
+        public TPrimitive Z
+        {
+            get => Elements[2];
+
+            set => Elements[2] = value;
+        }
+
+        #endregion Vector Element Accessors
+
         #region Constructors
 
         protected X3DVec3Field()
         {
-            this.Elements = new TPrimitive[3];
+            Elements = new TPrimitive[3];
         }
 
         protected X3DVec3Field(TPrimitive x, TPrimitive y, TPrimitive z)
             : this()
         {
-            this.Elements[0] = x;
-            this.Elements[1] = y;
-            this.Elements[2] = z;
+            Elements[0] = x;
+            Elements[1] = y;
+            Elements[2] = z;
         }
 
         #endregion Constructors
-
-        #region Vector Element Accessors
-
-        public TPrimitive Z
-        {
-            get
-            {
-                return this.Elements[2];
-            }
-
-            set
-            {
-                this.Elements[2] = value;
-            }
-        }
-
-        #endregion Vector Element Accessors
 
         #region Object Equality
 
         public override int GetHashCode()
         {
-            var z = this.Z.GetHashCode() * HashTablePrimeNumbers[2];
+            var z = Z.GetHashCode() * HashTablePrimeNumbers[2];
 
             return base.GetHashCode() ^ z;
         }
@@ -153,9 +135,9 @@
             {
                 var casted = (X3DVec3Field<TPrimitive>)obj;
 
-                return this.X.Equals(casted.X)
-                    && this.Y.Equals(casted.Y)
-                    && this.Z.Equals(casted.Z);
+                return X.Equals(casted.X)
+                       && Y.Equals(casted.Y)
+                       && Z.Equals(casted.Z);
             }
 
             return false;
@@ -167,17 +149,17 @@
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}", this.X, this.Y, this.Z);
+            return string.Format("{0} {1} {2}", X, Y, Z);
         }
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ' ' };
+            var delimiter = new[] { ' ' };
             var tokens = str.Split(delimiter);
 
-            this.X.FromString(tokens[0]);
-            this.Y.FromString(tokens[1]);
-            this.Y.FromString(tokens[2]);
+            X.FromString(tokens[0]);
+            Y.FromString(tokens[1]);
+            Y.FromString(tokens[2]);
         }
 
         #endregion String Compatibility
@@ -186,46 +168,40 @@
     public abstract class X3DVec4Field<TPrimitive> : X3DVec3Field<TPrimitive>
         where TPrimitive : X3DPrimitiveField, new()
     {
+        #region Vector Element Accessors
+
+        public TPrimitive Homegeneous
+        {
+            get => Elements[3];
+
+            set => Elements[3] = value;
+        }
+
+        #endregion Vector Element Accessors
+
         #region Constructors
 
         protected X3DVec4Field()
         {
-            this.Elements = new TPrimitive[4];
+            Elements = new TPrimitive[4];
         }
 
         protected X3DVec4Field(TPrimitive x, TPrimitive y, TPrimitive z, TPrimitive h)
             : this()
         {
-            this.Elements[0] = x;
-            this.Elements[1] = y;
-            this.Elements[2] = z;
-            this.Elements[3] = h;
+            Elements[0] = x;
+            Elements[1] = y;
+            Elements[2] = z;
+            Elements[3] = h;
         }
 
         #endregion Constructors
-
-        #region Vector Element Accessors
-
-        public TPrimitive Homegeneous
-        {
-            get
-            {
-                return this.Elements[3];
-            }
-
-            set
-            {
-                this.Elements[3] = value;
-            }
-        }
-
-        #endregion Vector Element Accessors
 
         #region Object Equality
 
         public override int GetHashCode()
         {
-            var h = this.Homegeneous.GetHashCode() * HashTablePrimeNumbers[3];
+            var h = Homegeneous.GetHashCode() * HashTablePrimeNumbers[3];
 
             return base.GetHashCode() ^ h;
         }
@@ -236,10 +212,10 @@
             {
                 var casted = (X3DVec4Field<TPrimitive>)obj;
 
-                return this.X.Equals(casted.X)
-                    && this.Y.Equals(casted.Y)
-                    && this.Z.Equals(casted.Z)
-                    && this.Homegeneous.Equals(casted.Homegeneous);
+                return X.Equals(casted.X)
+                       && Y.Equals(casted.Y)
+                       && Z.Equals(casted.Z)
+                       && Homegeneous.Equals(casted.Homegeneous);
             }
 
             return false;
@@ -251,18 +227,18 @@
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2} {3}", this.X, this.Y, this.Z, this.Homegeneous);
+            return string.Format("{0} {1} {2} {3}", X, Y, Z, Homegeneous);
         }
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ' ' };
+            var delimiter = new[] { ' ' };
             var tokens = str.Split(delimiter);
 
-            this.X.FromString(tokens[0]);
-            this.Y.FromString(tokens[1]);
-            this.Y.FromString(tokens[2]);
-            this.Y.FromString(tokens[3]);
+            X.FromString(tokens[0]);
+            Y.FromString(tokens[1]);
+            Y.FromString(tokens[2]);
+            Y.FromString(tokens[3]);
         }
 
         #endregion String Compatibility

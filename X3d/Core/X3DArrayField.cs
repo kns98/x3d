@@ -1,16 +1,16 @@
-﻿namespace X3d.Core
-{
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
 
+namespace X3d.Core
+{
     /// <summary>
-    /// X3DArrayField is the abstract field type from which all field types that
-    /// can contain multiple values are derived. All fields derived from 
-    /// X3DArrayField have names beginning with MF. MFxxxx fields may zero or 
-    /// more values, each of which shall be of the type indicated by the
-    /// corresponding SFxxxx field type. It is illegal for any MFxxxx field 
-    /// to mix values of different SFxxxx field types.
+    ///     X3DArrayField is the abstract field type from which all field types that
+    ///     can contain multiple values are derived. All fields derived from
+    ///     X3DArrayField have names beginning with MF. MFxxxx fields may zero or
+    ///     more values, each of which shall be of the type indicated by the
+    ///     corresponding SFxxxx field type. It is illegal for any MFxxxx field
+    ///     to mix values of different SFxxxx field types.
     /// </summary>
     public abstract class X3DArrayField<SingleField> : List<SingleField>
         where SingleField : X3DField, new()
@@ -24,20 +24,20 @@
 
         public virtual void FromString(string str)
         {
-            var delimiter = new char[] { ',' };
-            this.FromString(str.Split(delimiter));
+            var delimiter = new[] { ',' };
+            FromString(str.Split(delimiter));
         }
 
         protected void FromString(string[] tokens)
         {
-            this.Clear();
+            Clear();
 
             foreach (var token in tokens)
             {
                 var obj = new SingleField();
                 obj.FromString(token);
 
-                this.Add(obj);
+                Add(obj);
             }
         }
 
@@ -52,8 +52,8 @@
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ',', ' ' };
-            this.FromString(str.Split(delimiter));
+            var delimiter = new[] { ',', ' ' };
+            FromString(str.Split(delimiter));
         }
 
         public static implicit operator MFBool(string str)
@@ -121,8 +121,8 @@
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ',', ' ' };
-            this.FromString(str.Split(delimiter));
+            var delimiter = new[] { ',', ' ' };
+            FromString(str.Split(delimiter));
         }
 
         public static implicit operator MFDouble(string str)
@@ -148,8 +148,8 @@
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ',', ' ' };
-            this.FromString(str.Split(delimiter));
+            var delimiter = new[] { ',', ' ' };
+            FromString(str.Split(delimiter));
         }
 
         public static implicit operator MFFloat(string str)
@@ -196,8 +196,8 @@
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ',', ' ' };
-            this.FromString(str.Split(delimiter));
+            var delimiter = new[] { ',', ' ' };
+            FromString(str.Split(delimiter));
         }
 
         public static implicit operator MFInt32(string str)
@@ -307,8 +307,8 @@
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ',', ' ' };
-            this.FromString(str.Split(delimiter));
+            var delimiter = new[] { ',', ' ' };
+            FromString(str.Split(delimiter));
         }
 
         public static implicit operator MFNode(string str)
@@ -359,21 +359,16 @@
             var csvSplit = new Regex("(\"(?:[^\"]*)\")", RegexOptions.Compiled);
 
             foreach (Match match in csvSplit.Matches(str))
-            {
                 strNewSplit.Add(match.Value.TrimStart(',').TrimStart('\"').TrimEnd('\"'));
-            }
 
-            this.FromString(strNewSplit.ToArray());
+            FromString(strNewSplit.ToArray());
         }
 
         public override string ToString()
         {
             var builder = new StringBuilder();
-            
-            foreach (var item in this)
-            {
-                builder.AppendFormat("\"{0}\" ", item);
-            }
+
+            foreach (var item in this) builder.AppendFormat("\"{0}\" ", item);
 
             return builder.ToString().TrimEnd(' ');
         }
@@ -401,8 +396,8 @@
 
         public override void FromString(string str)
         {
-            var delimiter = new char[] { ',', ' ' };
-            this.FromString(str.Split(delimiter));
+            var delimiter = new[] { ',', ' ' };
+            FromString(str.Split(delimiter));
         }
 
         public static implicit operator MFTime(string str)

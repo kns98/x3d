@@ -1,7 +1,7 @@
-﻿namespace X3d.Core
-{
-    using System;
+﻿using System;
 
+namespace X3d.Core
+{
     public enum X3DVersion
     {
         X3D_3_0,
@@ -44,13 +44,12 @@
 
                 case X3D_3_1:
                     return X3DVersion.X3D_3_1;
-                    
+
                 case X3D_3_2:
                     return X3DVersion.X3D_3_2;
 
                 default:
                     throw new FormatException(string.Format("Invalid string value : [{0}]", value));
-
             }
         }
     }
